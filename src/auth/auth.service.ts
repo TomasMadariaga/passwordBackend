@@ -17,8 +17,6 @@ import { Response } from 'express';
 export class AuthService {
   constructor(
     private readonly userService: UsersService,
-    private jwtService: JwtService,
-    @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
   async validateUser(username: string, password: string) {
