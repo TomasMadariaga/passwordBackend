@@ -50,7 +50,7 @@ export class AuthController {
       email: user.email,
     });
     response.cookie('token', token, {
-      domain: 'localhost',
+      domain: 'password-backend-6g1b.onrender',
       path: '/',
       secure: true,
     });
@@ -70,7 +70,11 @@ export class AuthController {
       username: user.username,
       email: user.email,
     });
-    response.cookie('token', token);
+    response.cookie('token', token, {
+      domain: 'password-backend-6g1b.onrender',
+      path: '/',
+      secure: true,
+    });
 
     return { ...loginUser, token };
   }
