@@ -15,9 +15,8 @@ async function bootstrap() {
   );
 
   app.enableCors({
-    origin: [
-      'https://passwordgenerator-9cxnofp7s-tomas-projects-e1b665dc.vercel.app/',
-    ],
+    origin: true,
+    methods: ['GET', 'POST', 'DELETE', 'PUT'],
     credentials: true,
   });
 
