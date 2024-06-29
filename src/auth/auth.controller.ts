@@ -50,7 +50,7 @@ export class AuthController {
       email: user.email,
     });
     response.cookie('token', token, {
-      domain: 'https://passwordgenerator-ngprfh14w-tomas-projects-e1b665dc.vercel.app',
+      domain: '.vercel.app',
       path: '/',
       secure: true,
     });
@@ -71,7 +71,7 @@ export class AuthController {
       email: user.email,
     });
     response.cookie('token', token, {
-      domain: 'https://passwordgenerator-ngprfh14w-tomas-projects-e1b665dc.vercel.app',
+      domain: '.vercel.app',
       path: '/',
       secure: true,
     });
