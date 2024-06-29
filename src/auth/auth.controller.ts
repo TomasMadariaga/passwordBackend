@@ -50,7 +50,7 @@ export class AuthController {
       email: user.email,
     });
     response.cookie('token', token, {
-      domain: 'password-backend-6g1b.onrender',
+      domain: '.vercel.app',
       path: '/',
       secure: true,
     });
@@ -71,7 +71,7 @@ export class AuthController {
       email: user.email,
     });
     response.cookie('token', token, {
-      domain: 'password-backend-6g1b.onrender',
+      domain: '.vercel.app',
       path: '/',
       secure: true,
     });
