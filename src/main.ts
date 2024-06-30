@@ -14,10 +14,7 @@ async function bootstrap() {
     }),
   );
 
-  app.enableCors({
-    origin: true,
-    credentials: true,
-  });
+  app.enableCors({ origin: /.+/, credentials: true });
 
   app.use(cookieParser());
 
