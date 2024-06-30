@@ -51,7 +51,7 @@ export class AuthController {
     });
     response.cookie('token', token, {
       domain:
-        '.app',
+        '.vercel.app',
       path: '/',
       secure: true,
     });
@@ -73,7 +73,7 @@ export class AuthController {
     });
     response.cookie('token', token, {
       domain:
-        '.app',
+        '.vercel.app',
       path: '/',
       secure: true,
     });
