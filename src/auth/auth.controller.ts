@@ -15,7 +15,7 @@ import { AuthService } from './auth.service';
 import { UsersService } from 'src/users/users.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
-import { UpdateUserDto } from '../users/dto/user.dto'
+import { UpdateUserDto } from '../users/dto/user.dto';
 import { Request, Response } from 'express';
 import { JwtService } from '@nestjs/jwt';
 
@@ -50,7 +50,8 @@ export class AuthController {
       email: user.email,
     });
     response.cookie('token', token, {
-      domain: '.vercel.app',
+      domain:
+        '.vercel.app',
       path: '/',
       secure: true,
     });
@@ -71,7 +72,8 @@ export class AuthController {
       email: user.email,
     });
     response.cookie('token', token, {
-      domain: '.vercel.app',
+      domain:
+        '.vercel.app',
       path: '/',
       secure: true,
     });
@@ -88,7 +90,7 @@ export class AuthController {
 
       const payload = await this.jwtService.verifyAsync(token, {
         secret: process.env.SECRET,
-        ignoreExpiration: true
+        ignoreExpiration: true,
       });
 
       return payload;
