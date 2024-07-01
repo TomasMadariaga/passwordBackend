@@ -53,7 +53,6 @@ export class AuthController {
       domain:
         'https://passwordgenerator-tomas-projects-e1b665dc.vercel.app',
       path: '/',
-      secure: true,
     });
 
     return { ...registeredUser, token };
@@ -75,7 +74,6 @@ export class AuthController {
       domain:
         'https://passwordgenerator-tomas-projects-e1b665dc.vercel.app',
       path: '/',
-      secure: true,
     });
 
     return { ...loginUser, token };
