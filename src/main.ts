@@ -21,8 +21,6 @@ async function bootstrap() {
       'passwordgenerator-ekgnqeqob-tomas-projects-e1b665dc.vercel.app',
       'https://passwordgenerator-tomas-projects-e1b665dc.vercel.app',
     ],
-    optionsSuccessStatus: 204,
-    allowedHeaders: ['Content-type', 'Authorization'],
   });
 
   app.use(cookieParser());
