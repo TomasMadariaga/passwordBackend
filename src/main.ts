@@ -15,8 +15,10 @@ async function bootstrap() {
   );
 
   app.enableCors({
-    origin: true,
+    origin: ['https://passwordgenerator-qwwt0uki1-tomas-projects-e1b665dc.vercel.app', 'https://passwordgenerator-tomas-projects-e1b665dc.vercel.app', '.vercel.app'],
     credentials: true,
+    exposedHeaders: ['cookies', 'token'],
+    allowedHeaders: ['cookies', 'token', 'authorization']
   });
 
   app.use(cookieParser());
