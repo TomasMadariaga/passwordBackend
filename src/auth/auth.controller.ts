@@ -51,7 +51,7 @@ export class AuthController {
     });
     response.cookie('token', token, {
       domain:
-        'https://passwordgenerator-tomas-projects-e1b665dc.vercel.app',
+        'passwordgenerator-pv8lm9hoi-tomas-projects-e1b665dc.vercel.app',
       path: '/',
     });
 
@@ -72,7 +72,7 @@ export class AuthController {
     });
     response.cookie('token', token, {
       domain:
-        'https://passwordgenerator-tomas-projects-e1b665dc.vercel.app',
+        'passwordgenerator-pv8lm9hoi-tomas-projects-e1b665dc.vercel.app',
       path: '/',
     });
 
