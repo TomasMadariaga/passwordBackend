@@ -16,7 +16,6 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
-
   app.enableCors({
     credentials: true,
     origin: [
@@ -24,6 +23,7 @@ async function bootstrap() {
       'passwordgenerator-qe9x7uwhg-tomas-projects-e1b665dc.vercel.app',
       'https://passwordgenerator-tomas-projects-e1b665dc.vercel.app',
     ],
+    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
   });
 
   await app.listen(3000);
