@@ -56,6 +56,8 @@ export class AuthController {
       domain: '.vercel.app',
       path: '/',
       secure: true,
+      httpOnly: false,
+      sameSite: true
     });
 
     return { ...registeredUser, token };
@@ -80,6 +82,8 @@ export class AuthController {
       domain: '.vercel.app',
       path: '/',
       secure: true,
+      httpOnly: false,
+      sameSite: true
     });
 
     return { ...loginUser, token };
