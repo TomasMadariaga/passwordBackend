@@ -21,6 +21,7 @@ async function bootstrap() {
       'passwordgenerator-tomas-projects-e1b665dc.vercel.app',
       '.vercel.app',
     ],
+    optionsSuccessStatus: 200
   });
 
   app.use(cookieParser());
