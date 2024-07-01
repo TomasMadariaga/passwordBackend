@@ -44,16 +44,18 @@ export class AuthController {
   ): Promise<any> {
     const registeredUser = await this.authService.register(regiserDto);
     const user = await this.userService.findOneByEmail(regiserDto.email);
-    const token = await this.jwtService.signAsync({
-      id: user.id,
-      username: user.username,
-      email: user.email,
-    });
+    const token = await this.jwtService.signAsync(
+      {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+      },
+      { secret: process.env.SECRET },
+    );
     response.cookie('token', token, {
-      domain:
-        '.vercel.app',
+      domain: '.vercel.app',
       path: '/',
-      secure: true
+      secure: true,
     });
 
     return { ...registeredUser, token };
@@ -66,16 +68,18 @@ export class AuthController {
   ): Promise<any> {
     const loginUser = await this.authService.login(loginDto);
     const user = await this.userService.findOneByEmail(loginDto.email);
-    const token = await this.jwtService.signAsync({
-      id: user.id,
-      username: user.username,
-      email: user.email,
-    });
+    const token = await this.jwtService.signAsync(
+      {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+      },
+      { secret: process.env.SECRET },
+    );
     response.cookie('token', token, {
-      domain:
-        '.vercel.app',
+      domain: '.vercel.app',
       path: '/',
-      secure: true
+      secure: true,
     });
 
     return { ...loginUser, token };
