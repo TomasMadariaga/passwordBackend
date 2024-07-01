@@ -53,7 +53,7 @@ export class AuthController {
       { secret: process.env.SECRET },
     );
     response.cookie('token', token, {
-      domain: 'passwordgenerator-qe9x7uwhg-tomas-projects-e1b665dc.vercel.app',
+      domain: `${process.env.COOKIE_DOMAIN}`,
       path: '/',
       secure: true,
     });
@@ -77,7 +77,7 @@ export class AuthController {
       { secret: process.env.SECRET },
     );
     response.cookie('token', token, {
-      domain: 'passwordgenerator-qe9x7uwhg-tomas-projects-e1b665dc.vercel.app',
+      domain: `${process.env.COOKIE_DOMAIN}`,
       path: '/',
       secure: true,
     });
