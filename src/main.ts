@@ -18,7 +18,6 @@ async function bootstrap() {
 
 
   app.enableCors({
-    credentials: true,
     origin: [
       'https://passwordgenerator-qe9x7uwhg-tomas-projects-e1b665dc.vercel.app',
       'passwordgenerator-qe9x7uwhg-tomas-projects-e1b665dc.vercel.app',
