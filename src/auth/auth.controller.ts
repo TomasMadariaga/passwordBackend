@@ -53,7 +53,7 @@ export class AuthController {
       { secret: process.env.SECRET },
     );
     response.cookie('token', token, {
-      domain: `${process.env.COOKIE_DOMAIN}`,
+      // domain: `${process.env.COOKIE_DOMAIN}`,
       path: '/',
       secure: true,
       sameSite: true,
@@ -79,7 +79,7 @@ export class AuthController {
       { secret: process.env.SECRET },
     );
     response.cookie('token', token, {
-      domain: `${process.env.COOKIE_DOMAIN}`,
+      // domain: `${process.env.COOKIE_DOMAIN}`,
       path: '/',
       secure: true,
       sameSite: true,
