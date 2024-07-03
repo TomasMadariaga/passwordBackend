@@ -56,7 +56,7 @@ export class AuthController {
       domain: `${process.env.COOKIE_DOMAIN}`,
       path: '/',
       secure: true,
-      sameSite: 'strict',
+      sameSite: 'none',
       httpOnly: true
     });
 
@@ -82,7 +82,7 @@ export class AuthController {
       domain: `${process.env.COOKIE_DOMAIN}`,
       path: '/',
       secure: true,
-      sameSite: 'strict',
+      sameSite: 'none',
       httpOnly: true
     });
 
