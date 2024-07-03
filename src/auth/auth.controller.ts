@@ -55,9 +55,7 @@ export class AuthController {
     response.cookie('token', token, {
       domain: `${process.env.COOKIE_DOMAIN}`,
       path: '/',
-      secure: true,
       sameSite: 'none',
-      httpOnly: true
     });
 
     return { ...registeredUser, token };
@@ -81,9 +79,7 @@ export class AuthController {
     response.cookie('token', token, {
       domain: `${process.env.COOKIE_DOMAIN}`,
       path: '/',
-      secure: true,
       sameSite: 'none',
-      httpOnly: true
     });
 
     return { ...loginUser, token };
