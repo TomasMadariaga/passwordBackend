@@ -16,15 +16,7 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
-  app.enableCors({
-    credentials: true,
-    origin: [
-      'https://tomas-password-generator.netlify.app/',
-      'https://tomas-password-generator.netlify.app',
-      'tomas-password-generator.netlify.app'
-    ],
-    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
-  });
+  app.enableCors();
 
   await app.listen(process.env.PORT || 3000);
 }
