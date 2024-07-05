@@ -4,7 +4,7 @@
     "SECRET": "messi18122022",
     "COOKIE_DOMAIN": ".netlify.app"
   },
-  "build": [
+  "builds": [
     {
       "src": "src/main.ts",
       "use": "@vercel/node"
