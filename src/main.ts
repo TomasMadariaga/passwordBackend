@@ -20,7 +20,8 @@ async function bootstrap() {
     credentials: true,
     origin: [
       'https://passwordgenerator-luuy4xcwj-tomas-projects-e1b665dc.vercel.app',
-      'https://passwordgenerator-tomas-projects-e1b665dc.vercel.app'
+      'https://passwordgenerator-tomas-projects-e1b665dc.vercel.app',
+      'https://tomas-password-generator.netlify.app'
     ],
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
   });

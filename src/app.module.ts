@@ -4,13 +4,8 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { PasswordModule } from './password/password.module';
-import { PasswordService } from './password/password.service';
-import { PasswordController } from './password/password.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { AuthController } from './auth/auth.controller';
-import { AuthService } from './auth/auth.service';
-import { JwtService } from '@nestjs/jwt';
 
 @Module({
   imports: [
