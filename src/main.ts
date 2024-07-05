@@ -19,8 +19,7 @@ async function bootstrap() {
   app.enableCors({
     credentials: true,
     origin: [
-      'https://tomas-password-generator.netlify.app',
-      'tomas-password-generator.netlify.app'
+      '*',
     ],
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
   });
