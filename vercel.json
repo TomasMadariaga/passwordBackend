@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "env": {
+    "SECRET": "messi18122022",
+    "COOKIE_DOMAIN": ".netlify.app",
+    "DB_DATABASE": "defaultdb",
+    "DB_HOST": "mysql-3dbf8a3d-password-database.g.aivencloud.com",
+    "DB_PASSWORD": "AVNS_u86nsxqKQEPhdp1gByP",
+    "DB_PORT": 23016,
+    "DB_USERNAME": "avnadmin"
+  },
+  "build": [
+    {
+      "src": "src/main.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/main.ts",
+      "methods": ["GET", "POST", "PUT", "DELETE"]
+    }
+  ]
+}
