@@ -18,6 +18,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
+      'https://password-frontend-eta.vercel.app',
       'https://tomas-password-generator.netlify.app',
       'https://passwordgenerator-if5euk0z8-tomas-projects-e1b665dc.vercel.app',
     ],
