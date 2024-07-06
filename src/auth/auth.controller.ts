@@ -53,7 +53,7 @@ export class AuthController {
       { secret: process.env.SECRET },
     );
     response.cookie('token', token, {
-      domain: `${process.env.COOKIE_DOMAIN}`,
+      domain: '.vercel.app',
       path: '/',
       secure: true,
     });
@@ -77,7 +77,7 @@ export class AuthController {
       { secret: process.env.SECRET },
     );
     response.cookie('token', token, {
-      domain: `${process.env.COOKIE_DOMAIN}`,
+      domain: '.vercel.app',
       path: '/',
       secure: true,
     });
