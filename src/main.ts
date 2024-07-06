@@ -17,7 +17,10 @@ async function bootstrap() {
   app.use(cookieParser());
 
   app.enableCors({
-    origin: 'https://tomas-password-generator.netlify.app',
+    origin: [
+      'https://tomas-password-generator.netlify.app',
+      'https://passwordgenerator-if5euk0z8-tomas-projects-e1b665dc.vercel.app',
+    ],
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true,
   });
