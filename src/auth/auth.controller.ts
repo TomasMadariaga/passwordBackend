@@ -55,8 +55,6 @@ export class AuthController {
     response.cookie('token', token, {
       domain: `${process.env.COOKIE_DOMAIN}`,
       path: '/',
-      httpOnly: true,
-      sameSite: 'none',
       secure: true,
     });
 
@@ -81,8 +79,6 @@ export class AuthController {
     response.cookie('token', token, {
       domain: `${process.env.COOKIE_DOMAIN}`,
       path: '/',
-      httpOnly: true,
-      sameSite: 'none',
       secure: true,
     });
 
