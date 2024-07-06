@@ -54,7 +54,6 @@ export class AuthController {
     );
     response.cookie('token', token, {
       path: '/',
-      sameSite: 'none',
       httpOnly: true,
       secure: true,
     });
@@ -79,7 +78,6 @@ export class AuthController {
     );
     response.cookie('token', token, {
       path: '/',
-      sameSite: 'none',
       httpOnly: true,
       secure: true,
     });
