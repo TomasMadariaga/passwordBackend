@@ -23,6 +23,7 @@ async function bootstrap() {
       'https://passwordgenerator-if5euk0z8-tomas-projects-e1b665dc.vercel.app',
     ],
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: 'Content-Type, Authorization',
     credentials: true,
   });
 
