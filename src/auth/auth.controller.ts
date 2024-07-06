@@ -54,6 +54,7 @@ export class AuthController {
     );
     response.cookie('token', token, {
       sameSite: 'none',
+      expires: new Date(Date.now() + 900000),
       path: '/',
       httpOnly: true,
       secure: true,
@@ -79,6 +80,7 @@ export class AuthController {
     );
     response.cookie('token', token, {
       sameSite: 'none',
+      expires: new Date(Date.now() + 900000),
       path: '/',
       httpOnly: true,
       secure: true,
