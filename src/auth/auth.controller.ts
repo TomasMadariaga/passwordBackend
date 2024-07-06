@@ -53,7 +53,7 @@ export class AuthController {
       { secret: process.env.SECRET },
     );
     response.cookie('token', token, {
-      sameSite: 'none',
+      sameSite: 'strict',
       expires: new Date(Date.now() + 900000),
       path: '/',
       httpOnly: true,
@@ -79,7 +79,7 @@ export class AuthController {
       { secret: process.env.SECRET },
     );
     response.cookie('token', token, {
-      sameSite: 'none',
+      sameSite: 'strict',
       expires: new Date(Date.now() + 900000),
       path: '/',
       httpOnly: true,
