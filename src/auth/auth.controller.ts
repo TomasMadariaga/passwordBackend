@@ -7,16 +7,14 @@ import {
   ParseIntPipe,
   Post,
   Put,
-  Req,
   Res,
-  UnauthorizedException,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UsersService } from 'src/users/users.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { UpdateUserDto } from '../users/dto/user.dto';
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { JwtService } from '@nestjs/jwt';
 
 @Controller('auth')
@@ -38,10 +36,7 @@ export class AuthController {
   }
 
   @Post('/register')
-  async register(
-    @Body() regiserDto: RegisterDto,
-    @Res({ passthrough: true }) response: Response,
-  ): Promise<any> {
+  async register(@Body() regiserDto: RegisterDto): Promise<any> {
     const registeredUser = await this.authService.register(regiserDto);
     const user = await this.userService.findOneByEmail(regiserDto.email);
     const token = await this.jwtService.signAsync(
@@ -52,22 +47,19 @@ export class AuthController {
       },
       { secret: process.env.SECRET },
     );
-    response.cookie('token', token, {
-      sameSite: 'strict',
-      expires: new Date(Date.now() + 900000),
-      path: '/',
-      httpOnly: true,
-      secure: true,
-    });
+    // response.cookie('token', token, {
+    //   sameSite: 'none',
+    //   expires: new Date(Date.now() + 900000),
+    //   path: '/',
+    //   httpOnly: true,
+    //   secure: true,
+    // });
 
     return { ...registeredUser, token };
   }
 
   @Post('/login')
-  async login(
-    @Body() loginDto: LoginDto,
-    @Res({ passthrough: true }) response: Response,
-  ): Promise<any> {
+  async login(@Body() loginDto: LoginDto): Promise<any> {
     const loginUser = await this.authService.login(loginDto);
     const user = await this.userService.findOneByEmail(loginDto.email);
     const token = await this.jwtService.signAsync(
@@ -78,23 +70,21 @@ export class AuthController {
       },
       { secret: process.env.SECRET },
     );
-    response.cookie('token', token, {
-      sameSite: 'strict',
-      expires: new Date(Date.now() + 900000),
-      path: '/',
-      httpOnly: true,
-      secure: true,
-    });
+    // response.cookie('token', token, {
+    //   sameSite: 'none',
+    //   expires: new Date(Date.now() + 900000),
+    //   path: '/',
+    //   httpOnly: true,
+    //   secure: true,
+    // });
 
     return { ...loginUser, token };
   }
 
-  @Get('/verify')
-  async verify(@Req() request: Request): Promise<any> {
+  @Post('/verify')
+  async verify(@Body() verifyToken): Promise<string> {
     try {
-      const { token } = request.cookies;
-
-      if (!token) throw new UnauthorizedException('Unauthorized');
+      const { token } = verifyToken
 
       const payload = await this.jwtService.verifyAsync(token, {
         secret: process.env.SECRET,

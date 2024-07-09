@@ -21,6 +21,8 @@ async function bootstrap() {
       'https://password-frontend-eta.vercel.app',
       'https://tomas-password-generator.netlify.app',
       'https://passwordgenerator-if5euk0z8-tomas-projects-e1b665dc.vercel.app',
+      'http://localhost:5173',
+      'https://password-generator-4w2h84d6f-tomas-projects-e1b665dc.vercel.app'
     ],
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: 'Content-Type, Authorization',
