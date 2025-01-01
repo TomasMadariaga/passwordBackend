@@ -1,6 +1,6 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import * as bcrypt from 'bcrypt';
 import { Password } from 'src/password/password.entity';
+import * as bcrypt from 'bcrypt';
 
 @Entity()
 export class User {

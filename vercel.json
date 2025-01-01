@@ -1,8 +1,7 @@
 {
   "version": 2,
   "env": {
-    "SECRET": "messi18122022",
-    "COOKIE_DOMAIN": ".netlify.app"
+    "SECRET": "messi18122022"
   },
   "builds": [
     {

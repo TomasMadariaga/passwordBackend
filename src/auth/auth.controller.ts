@@ -36,9 +36,9 @@ export class AuthController {
   }
 
   @Post('/register')
-  async register(@Body() regiserDto: RegisterDto): Promise<any> {
-    const registeredUser = await this.authService.register(regiserDto);
-    const user = await this.userService.findOneByEmail(regiserDto.email);
+  async register(@Body() registerDto: RegisterDto): Promise<any> {
+    const registeredUser = await this.authService.register(registerDto);
+    const user = await this.userService.findOneByEmail(registerDto.email);
     const token = await this.jwtService.signAsync(
       {
         id: user.id,
@@ -84,7 +84,7 @@ export class AuthController {
   @Post('/verify')
   async verify(@Body() verifyToken): Promise<string> {
     try {
-      const { token } = verifyToken
+      const { token } = verifyToken;
 
       const payload = await this.jwtService.verifyAsync(token, {
         secret: process.env.SECRET,
