@@ -40,32 +40,6 @@ export class AuthService {
         password,
       });
 
-      const payload = {
-        username: registeredUser.username,
-        email: registeredUser.email,
-      };
-
-      const token = this.jwtService.sign(payload, {
-        secret: process.env.SECRET,
-      });
-
-      const refreshToken = this.jwtService.sign(payload, {
-        secret: process.env.SECRET,
-        expiresIn: '7d',
-      });
-
-      res.cookie('token', token, {
-        httpOnly: true,
-        // secure: true,
-        path: '/',
-      });
-
-      res.cookie('refreshToken', refreshToken, {
-        httpOnly: true,
-        // secure: true,
-        path: '/',
-      });
-
       res.send({
         username: registeredUser.username,
         email: registeredUser.email,
