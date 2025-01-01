@@ -36,8 +36,8 @@ export class AuthController {
   }
 
   @Post('/register')
-  async register(@Body() registerDto: RegisterDto): Promise<any> {
-    const registeredUser = await this.authService.register(registerDto);
+  async register(@Body() registerDto: RegisterDto, @Res() res: Response): Promise<any> {
+    const registeredUser = await this.authService.register(registerDto, res);
     const user = await this.userService.findOneByEmail(registerDto.email);
     const token = await this.jwtService.signAsync(
       {
@@ -55,7 +55,7 @@ export class AuthController {
     //   secure: true,
     // });
 
-    return { ...registeredUser, token };
+    return { registeredUser, token };
   }
 
   @Post('/login')

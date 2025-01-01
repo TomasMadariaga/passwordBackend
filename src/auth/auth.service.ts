@@ -8,11 +8,13 @@ import * as bcrypt from 'bcrypt';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { Response } from 'express';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly userService: UsersService,
+    private readonly jwtService: JwtService,
   ) {}
 
   async validateUser(username: string, password: string) {
@@ -24,28 +26,53 @@ export class AuthService {
     return null;
   }
 
-  async register({ username, email, password }: RegisterDto) {
+  async register({ username, email, password }: RegisterDto, res: Response) {
     try {
       const user = await this.userService.findOneByEmail(email);
 
-    if (user) {
-      throw new BadRequestException('User already exists');
-    }
+      if (user) {
+        throw new BadRequestException('User already exists');
+      }
 
-    await this.userService.create({
-      username,
-      email,
-      password
-    });
+      const registeredUser = await this.userService.create({
+        username,
+        email,
+        password,
+      });
 
-    return {
-      username,
-      email,
-    };
+      const payload = {
+        username: registeredUser.username,
+        email: registeredUser.email,
+      };
+
+      const token = this.jwtService.sign(payload, {
+        secret: process.env.SECRET,
+      });
+
+      const refreshToken = this.jwtService.sign(payload, {
+        secret: process.env.SECRET,
+        expiresIn: '7d',
+      });
+
+      res.cookie('token', token, {
+        httpOnly: true,
+        // secure: true,
+        path: '/',
+      });
+
+      res.cookie('refreshToken', refreshToken, {
+        httpOnly: true,
+        // secure: true,
+        path: '/',
+      });
+
+      res.send({
+        username: registeredUser.username,
+        email: registeredUser.email,
+      });
     } catch (error) {
-      throw new BadRequestException(error)
+      throw new BadRequestException(error);
     }
-    
   }
 
   async login({ email, password }: LoginDto) {
