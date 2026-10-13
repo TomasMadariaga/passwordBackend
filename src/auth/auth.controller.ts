@@ -37,10 +37,7 @@ export class AuthController {
   }
 
   @Post('/register')
-  async register(
-    @Body() registerDto: RegisterDto,
-    @Res() res: Response,
-  ): Promise<any> {
+  async register(@Body() registerDto: RegisterDto, @Res() res: Response): Promise<any> {
     const registeredUser = await this.authService.register(registerDto, res);
     const user = await this.userService.findOneByEmail(registerDto.email);
     const token = await this.jwtService.signAsync(
@@ -86,27 +83,28 @@ export class AuthController {
   }
 
   @Post('/verify')
-  async verify(@Body() body: { token: string }) {
-    const { token } = body;
+async verify(@Body() body: { token: string }) {
+  const { token } = body;
 
-    if (!token) {
-      throw new UnauthorizedException('Token no proporcionado');
-    }
-
-    try {
-      const payload = await this.jwtService.verifyAsync(token, {
-        secret: process.env.SECRET,
-      });
-
-      return {
-        id: payload.id,
-        username: payload.username,
-        email: payload.email,
-      };
-    } catch (error) {
-      throw new UnauthorizedException('Token inválido o expirado');
-    }
+  if (!token) {
+    throw new UnauthorizedException('Token no proporcionado');
   }
+
+  try {
+    const payload = await this.jwtService.verifyAsync(token, {
+      secret: process.env.SECRET,
+      ignoreExpiration: true
+    });
+
+    return {
+      id: payload.id,
+      username: payload.username,
+      email: payload.email,
+    };
+  } catch (error) {
+    throw new UnauthorizedException('Token inválido o expirado');
+  }
+}
 
   @Post('/logout')
   async logout(@Res({ passthrough: true }) response: Response): Promise<any> {
