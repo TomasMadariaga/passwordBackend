@@ -8,6 +8,7 @@ import {
   Post,
   Put,
   Res,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UsersService } from 'src/users/users.service';
@@ -36,7 +37,10 @@ export class AuthController {
   }
 
   @Post('/register')
-  async register(@Body() registerDto: RegisterDto, @Res() res: Response): Promise<any> {
+  async register(
+    @Body() registerDto: RegisterDto,
+    @Res() res: Response,
+  ): Promise<any> {
     const registeredUser = await this.authService.register(registerDto, res);
     const user = await this.userService.findOneByEmail(registerDto.email);
     const token = await this.jwtService.signAsync(
@@ -82,18 +86,25 @@ export class AuthController {
   }
 
   @Post('/verify')
-  async verify(@Body() verifyToken): Promise<string> {
-    try {
-      const { token } = verifyToken;
+  async verify(@Body() body: { token: string }) {
+    const { token } = body;
 
+    if (!token) {
+      throw new UnauthorizedException('Token no proporcionado');
+    }
+
+    try {
       const payload = await this.jwtService.verifyAsync(token, {
         secret: process.env.SECRET,
-        ignoreExpiration: true,
       });
 
-      return payload;
+      return {
+        id: payload.id,
+        username: payload.username,
+        email: payload.email,
+      };
     } catch (error) {
-      return error;
+      throw new UnauthorizedException('Token inválido o expirado');
     }
   }
 
